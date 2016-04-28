@@ -9,4 +9,34 @@ import tseng.min.c.AbstractSetting;
  */
 public abstract class PseudoDiscountTypeItem extends AbstractSetting implements AbstractInterface {
 	private static final String TAG = PseudoDiscountTypeItem.class.getSimpleName();
+	protected int mSubType;
+	protected boolean mEffective;
+	protected boolean mForever;
+
+	public void setEffective(boolean effective) {
+		synchronized (mUpdateLock) {
+			mEffective = effective;
+		}
+		mObservable.dispatchChange(false);
+	}
+
+	public abstract boolean isEffective();
+
+	public void setForever(boolean forever) {
+		synchronized (mUpdateLock) {
+			mForever = forever;
+		}
+		mObservable.dispatchChange(false);
+	}
+
+	public abstract boolean isForever();
+
+	public void setSubType(int subtype) {
+		synchronized (mUpdateLock) {
+			mSubType = subtype;
+		}
+		mObservable.dispatchChange(false);
+	}
+
+	public abstract int getSubType();
 }

@@ -3,6 +3,7 @@ package tseng.min.c.widget.cropimageview.util;
 import android.annotation.TargetApi;
 import android.content.ContentUris;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -132,6 +133,17 @@ public class Utils {
 			default:
 				return ExifInterface.ORIENTATION_NORMAL;
 		}
+	}
+
+	@SuppressWarnings("ResourceType")
+	@TargetApi(Build.VERSION_CODES.KITKAT)
+	public static Uri ensureUriPermission(Context context, Intent intent) {
+		Uri uri = intent.getData();
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+			final int takeFlags = intent.getFlags() & Intent.FLAG_GRANT_READ_URI_PERMISSION;
+			context.getContentResolver().takePersistableUriPermission(uri, takeFlags);
+		}
+		return uri;
 	}
 
 	/**
