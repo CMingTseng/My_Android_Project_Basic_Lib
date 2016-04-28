@@ -83,7 +83,7 @@ version = rootProject.ext.versionName
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
-    resourcePrefix "CMT"
+//    resourcePrefix "CMT"
     lintOptions {
 //        // use this line to check all rules except those listed
 //        disable 'RuleToDisable', 'SecondRuleToDisable'
@@ -92,9 +92,10 @@ android {
         checkReleaseBuilds false
         abortOnError false
     }
+
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 23
+        targetSdkVersion 22
         versionCode rootProject.ext.versionCode
 //        versionName rootProject.ext.versionName
         versionName version
