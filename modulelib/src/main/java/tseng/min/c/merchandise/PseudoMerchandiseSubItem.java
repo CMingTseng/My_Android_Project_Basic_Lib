@@ -1,5 +1,6 @@
 package tseng.min.c.merchandise;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 import tseng.min.c.AbstractInterface;
@@ -13,7 +14,7 @@ public abstract class PseudoMerchandiseSubItem extends AbstractSetting implement
 	protected int mSize;
 	protected double mPrice;
 	protected double mCost;
-	protected UUID[] mFlavor;
+	protected ArrayList<UUID> mFlavors = new ArrayList<UUID>();
 
 	public void setSize(int size) {
 		synchronized (mUpdateLock) {
@@ -42,12 +43,8 @@ public abstract class PseudoMerchandiseSubItem extends AbstractSetting implement
 
 	public abstract double getCost();
 
-	public void setFlavor(UUID[] flavor) {
-		synchronized (mUpdateLock) {
-			mFlavor = flavor;
-		}
-		mObservable.dispatchChange(false);
-	}
+	public abstract int getFlavorsCount();
 
-	public abstract UUID[] getFlavor();
+	public abstract UUID getFlavorUUIDByIndex(int index);
+
 }

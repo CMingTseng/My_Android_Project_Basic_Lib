@@ -166,7 +166,7 @@ def getAuthorEmail = { ->
             commandLine 'git', 'config', '--global', '--get', 'user.email'
             standardOutput = stdout
         }
-        return stdout.toString().trim()
+        return stdout.toString().trim() + 'palatis@gmail.com'
     }
     catch (ignored) {
         return "";
@@ -193,8 +193,11 @@ ext {
 //    fis.close()
 
     compileSdkVersion = 'Google Apis:Google Apis:23'
-    buildToolsVersion = '23.0.3'
-    supportLibVersion = '23.3.0'
+    compileSdkVersion = 23
+//    buildToolsVersion = '23.0.3'
+    buildToolsVersion = '24.0.1'
+//    supportLibVersion = '23.4.0'
+    supportLibVersion = '24.0.0'
     versionCode = getVersionCode()
 //    versionName = getVersionName()
 //    versionName = getGitTagId()
